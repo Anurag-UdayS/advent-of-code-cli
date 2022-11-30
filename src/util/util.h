@@ -6,7 +6,15 @@
 #include <time.h>
 
 #ifndef error
-	#define error(msg) fprintf(stderr, "%c[31m%s%c[m\n", 27, msg, 27);
+	#define error(msg) fprintf(stderr, "%c[31m[  ERROR  ]: %s%c[0m\n", 27, msg, 27)
+#endif
+
+#ifndef warn
+	#define warn(msg) fprintf(stderr, "%c[33m[ WARNING ]: %s%c[0m\n", 27, msg, 27)
+#endif
+
+#ifndef debug
+	#define debug(msg) fprintf(stderr, "%c[35m[  DEBUG  ]: %s%c[0m\n", 27, msg, 27)
 #endif
 
 
