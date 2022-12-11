@@ -25,4 +25,15 @@ _**2. Setup directory.**_
 
 _**3. Setup inner directories:**_
    + command to create a day directory.
+   + Directory Structure:
+
    + `.aocsettings`
+      + *dirtype*: "day"
+      + *day*: (int day)
+      
+   + fmt %D: Day and date (Monday 1st), %d: Date (1), %~D: Day (Monday), %~d: Short Day (Mon)
+
+_**4. Instruction viewer:**_
+   + view instructions of a particular day.
+   + render as a full screen view
+   + format code blocks separately (separate fg, hi, bg color).
