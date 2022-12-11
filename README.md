@@ -37,3 +37,12 @@ _**4. Instruction viewer:**_
    + view instructions of a particular day.
    + render as a full screen view
    + format code blocks separately (separate fg, hi, bg color).
+
+_**5. Test as per directory structure:**_
+   + test as per directory structure.
+
+_**6. Fetch both sample input and main input:**_
+
+_**7. Submit straight away:**_
+   + submit main answer from CLI
+   + option to submit without confirmation.
