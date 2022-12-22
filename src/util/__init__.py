@@ -1,4 +1,4 @@
-""" 
+"""
 package util;
 
 -> __init__.py
