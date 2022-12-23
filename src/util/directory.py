@@ -12,10 +12,7 @@ package util;
 import os
 from pathlib import Path
 
-from pathlib import *
-
-from unittest import TestCase
-import unittest as StartUnitTests
+import unittest as UnitTests
 
 
 class DirManager(object):
@@ -34,7 +31,7 @@ class DirManager(object):
 		else:
 			return super().__new__(cls)
 
-	def __init__(self, year: int, path: Path.cwd()):
+	def __init__(self, year: int, path: Path = Path.cwd()):
 		path = DirManager.getYearDirectoryPath(path, year)
 		self.path = path
 		self.year = year
@@ -46,7 +43,7 @@ class DirManager(object):
 			path = Path(path)
 
 		# Raise an error if a file is passed.
-		if (path.is_dir()):
+		if (path.is_file()):
 			# error
 			return None
 
@@ -76,7 +73,7 @@ class DirManager(object):
 #                                    TESTING                                    #
 #################################################################################
 
-class DirManagerTesting(TestCase):
+class DirManagerTesting(UnitTests.TestCase):
 
 	# Test 1: assert that directories created with the same path are equal.
 	def testEquality(self):
@@ -93,5 +90,5 @@ class DirManagerTesting(TestCase):
 
 if __name__ == '__main__':
 
-	StartUnitTests.main()
+	UnitTests.main()
 	# print(Path('./abc/2023'))
