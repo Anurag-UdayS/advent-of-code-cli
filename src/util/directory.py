@@ -14,7 +14,6 @@ from pathlib import Path
 
 import unittest as UnitTests
 
-
 class DirManager(object):
 	"""
 	DirManager will be a parent utility, and will
@@ -53,7 +52,7 @@ class DirManager(object):
 		# If path has no prefix, or is relative to cwd,
 		# Replace Path(.) with Path(CWD)
 		# Test that 1st char is not /
-		if (path.parts[0] == '.'):
+		if (root[0] == '.'):
 			path = Path.cwd() / path.relative_to('.')
 		elif (root[0] != '/'):
 			path = Path.cwd() / path
@@ -64,6 +63,10 @@ class DirManager(object):
 			path = path.joinpath(str(year))
 
 		return path
+
+
+	def build(self):
+		pass
 
 	def createDayDirectory(self, parent: Path = None):
 		pass
@@ -77,15 +80,24 @@ class DirManagerTesting(UnitTests.TestCase):
 
 	# Test 1: assert that directories created with the same path are equal.
 	def testEquality(self):
-		inst1: DirManager = DirManager(2023, './abc/2023')
-		inst2: DirManager = DirManager(2023, './abc/2023')
-		self.assertEqual(inst1, inst2)
+		dir1: DirManager = DirManager(2023, './test/2023')
+		dir2: DirManager = DirManager(2023, './test/2023')
+		self.assertEqual(dir1, dir2)
 
 	# Test 2: assert that directories created with different paths are inequal.
 	def testInEquality(self):
-		inst1: DirManager = DirManager(2023, './abc/2023')
-		inst2: DirManager = DirManager(2021, './abc/2021')
-		self.assertNotEqual(inst1, inst2)
+		dir1: DirManager = DirManager(2023, './test/2023')
+		dir2: DirManager = DirManager(2021, './test/2021')
+		self.assertNotEqual(dir1, dir2)
+
+	# Test 3: select path through different directives.
+	def testDifferentSelectionWays(self):
+		dir1: DirManager = DirManager(2023, './test')
+		dir2: DirManager = DirManager(2023, './test/2023')
+		dir3: DirManager = DirManager(2023, 'test')
+		self.assertEqual(dir1, dir2)
+		self.assertEqual(dir2, dir3)
+
 
 
 if __name__ == '__main__':
